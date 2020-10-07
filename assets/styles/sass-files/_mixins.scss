@@ -1,0 +1,112 @@
+@mixin breakpoint-xs {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-sm {
+    @media (min-width: 600px) and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-md {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lg {
+    @media (min-width: 1024px) and (max-width: 1365px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xl {
+    @media (min-width: 1366px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xl {
+    @media (min-width: 1920px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lt-sm {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lt-md {
+    @media (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lt-lg {
+    @media (max-width: 1365px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lt-xl {
+    @media (max-width: 1919px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-gt-xs {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-gt-sm {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-gt-md {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-gt-lg {
+    @media (min-width: 1366px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-gt-xl {
+    @media (min-width: 1920px) {
+        @content;
+    }
+}
+
+
+%scroll-bar-page {
+    &::-webkit-scrollbar {
+        $scrollbar-dimension: 10px;
+        height: $scrollbar-dimension;
+        width: $scrollbar-dimension;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 4px;
+        background-color: #F5F5F5;
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: #c1d4f2;
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+}

@@ -1,0 +1,480 @@
+@use 'vars';
+@import './mixins';
+
+html,
+body {
+    height: 100%;
+    color: vars.$color-app-text;
+}
+
+body {
+    margin: 0;
+    font-family: vars.$font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: vars.$font-heading;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+p {
+    margin: 4px 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    outline: none;
+    border: none;
+    background: none;
+    margin: 0;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 2px;
+    color: vars.$color-app-text;
+    cursor: pointer;
+}
+
+.content-width {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.text-meta {
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+%btn-text {
+    position: relative;
+    padding: 0;
+    padding-bottom: 8px;
+
+    &:focus::before,
+    &:hover::before {
+        right: 0;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 100%;
+        border-bottom: 2px solid #222;
+        transition: right .3s ease-out;
+    }
+}
+
+.app-header {
+    padding: 12px;
+
+    .fancy-text {
+        color: white;
+        font-size: 1.4rem;
+
+        a {
+            color: black;
+            font-style: italic;
+        }
+    }
+
+    .get-quote {
+        background-color: white;
+        color: vars.$color-primary;
+    }
+}
+
+main {
+    margin-top: 44px;
+
+    @include breakpoint-lt-md {
+        padding: 12px;
+    }
+}
+
+.our-services {
+    margin: auto;
+    text-align: center;
+    width: 350px;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .service-card {
+        width: 32%;
+        margin: 12px 0;
+
+        &:hover,
+        &:focus {
+            * {
+                color: vars.$color-primary;
+
+            }
+
+            .read-more {
+                &:before {
+                    border-color: vars.$color-primary;
+                    right: 0;
+                }
+            }
+        }
+
+        @include breakpoint-lt-md {
+            width: 100%;
+        }
+
+        .card-image {
+            height: 200px;
+        }
+
+        .card-body {
+            padding: 14px 0;
+
+            .read-more {
+                margin-top: 12px;
+                @extend %btn-text;
+            }
+        }
+    }
+}
+
+.salient-features {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .features-highlight {
+        width: 50%;
+        min-height: 300px;
+        position: relative;
+
+        @include breakpoint-lt-md {
+            width: 100%;
+        }
+
+        .video-icon {
+            position: absolute;
+            $offset: 20px;
+            bottom: $offset;
+            right: $offset;
+            width: 48px;
+            color: white;
+        }
+    }
+
+    .features-list {
+        background-color: #f8f8f8;
+        padding: 12px 40px;
+        width: 50%;
+
+        @include breakpoint-lt-md {
+            width: 100%;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-top: 28px;
+
+            .feature-meta {
+                width: 50%;
+                margin-left: 26px;
+
+                @include breakpoint-lt-md {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+.works {
+    margin: auto;
+    margin-top: 44px;
+    text-align: center;
+    width: 385px;
+
+    .tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 28px;
+
+        .tab-heading {
+            @extend %btn-text;
+
+            &:hover,
+            &:focus {
+                color: vars.$color-primary;
+            }
+
+            &:focus::before,
+            &:hover::before {
+                border-color: vars.$color-primary;
+            }
+        }
+
+        .tab-active {
+            color: vars.$color-primary;
+
+            &:before {
+                border-color: vars.$color-primary;
+                right: 0;
+            }
+        }
+    }
+}
+
+.work-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 4px;
+
+    .work-card {
+        height: 300px;
+        width: 32.9%;
+        margin-bottom: 0.6vw;
+        position: relative;
+
+        &:hover {
+            .card-meta-container {
+                padding: 10px;
+                height: auto;
+            }
+        }
+
+        &:first-child {
+            .card-meta-container {
+                padding: 10px;
+                height: auto;
+            }
+        }
+
+        @include breakpoint-md {
+            width: 49.6%;
+        }
+
+        @include breakpoint-lt-sm {
+            width: 100%;
+        }
+
+        .card-meta-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            overflow: hidden;
+            display: flex;
+            background-color: #fef6dd;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+
+            .card-title {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #333;
+                position: relative;
+                padding-bottom: 6px;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 75%;
+                    border-bottom: 2px solid #222;
+                    transition: right .3s ease-out;
+                }
+            }
+
+            .action-button {
+                background-color: vars.$color-primary;
+                color: white;
+                width: 36px;
+                height: 36px;
+                padding: 0;
+            }
+        }
+    }
+}
+
+.emotional-footer {
+    padding: 48px 0;
+    background-color: #f9f9f9;
+    margin-top: -0.6vw;
+
+    .footer {
+        border-left: 3px solid vars.$color-primary;
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #333;
+        position: relative;
+
+        .overlay {
+            background-color: #f8b72a61;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            z-index: 1;
+            transition: all 0.3s linear;
+        }
+
+        &:hover {
+            .overlay {
+                width: 100%;
+            }
+        }
+
+        p {
+            font-size: 0.7rem;
+        }
+
+        button {
+            color: white;
+            z-index: 2;
+        }
+    }
+}
+
+// ---------------- Utilities -----------------
+
+.app-large-heading {
+    font-size: 2.3rem;
+    font-weight: 900;
+}
+
+.app-heading {
+    font-size: 1.35rem;
+}
+
+.app-primary-background {
+    background-color: vars.$color-primary;
+}
+
+.app-primary-text {
+    color: vars.$color-primary;
+}
+
+.app-purple-background {
+    background-color: vars.$color-tile-purple;
+}
+
+.app-red-background {
+    background-color: vars.$color-tile-red;
+}
+
+.app-indigo-background {
+    background-color: vars.$color-tile-indigo;
+}
+
+.app-yellow-background {
+    background-color: vars.$color-tile-yellow;
+}
+
+.app-lime-background {
+    background-color: vars.$color-tile-lime;
+}
+
+// ----------- Flex -----------
+
+.flex {
+    display: flex;
+}
+
+.flex-middle {
+    align-items: center;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.flex-wrapped {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-align-self-end {
+    align-self: flex-end;
+}
+
+.flex-grow-1 {
+    flex: 1;
+}
+
+// spacer -----------------------------------------------------------------------------------------
+.spacer {
+    flex: 1;
+}
+
+// width -----------------------------------------------------------------------------------------
+.width-1-1 {
+    width: 100% !important;
+}
+
+.width-1-2 {
+    width: 50% !important;
+}
+
+.width-expand {
+    flex: 1;
+    min-width: 1px;
+}
+
+// -------------- padding -----------------------------
+.px-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.py-0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+// ------------ positions -------------
+.position-relative {
+    position: relative;
+}
+
+
+// --------------- text ------------
+.text-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
